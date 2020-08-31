@@ -1,12 +1,24 @@
-import { APIGatewayProxyHandler } from 'aws-lambda'
+import { Handler } from 'aws-lambda'
+import { Browser } from 'puppeteer'
+import * as chromium from 'chrome-aws-lambda'
 import 'source-map-support/register'
 
-export const hello: APIGatewayProxyHandler = async (event, _context) => {
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      message: 'Go Serverless Webpack (Typescript) v1.0! Your function executed successfully!',
-      input: event,
-    }, null, 2),
+import entry from './rc-entry/entry'
+
+export const rcEntry: Handler = async (_event, _context) => {
+  let browser: Browser = null
+
+  try {
+    browser = await chromium.puppeteer.launch({
+      args: chromium.args,
+      defaultViewport: chromium.defaultViewport,
+      executablePath: await chromium.executablePath,
+      headless: chromium.headless,
+    })
+    entry(browser).catch(err => console.error(err))
+  } finally {
+    if (browser !== null) {
+      await browser.close()
+    }
   }
 }

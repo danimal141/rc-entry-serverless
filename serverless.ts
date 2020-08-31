@@ -24,16 +24,18 @@ const serverlessConfiguration: Serverless = {
     },
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
+      EMAIL: process.env.EMAIL,
+      PASSWORD: process.env.PASSWORD,
     },
   },
   functions: {
-    hello: {
-      handler: 'handler.hello',
+    rcEntry: {
+      handler: 'handler.rcEntry',
       events: [
         {
           http: {
             method: 'get',
-            path: 'hello',
+            path: 'rcEntry',
           }
         }
       ]

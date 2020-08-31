@@ -4,15 +4,20 @@
   "description": "Serverless webpack example using Typescript",
   "main": "handler.js",
   "scripts": {
+    "deploy": "serverless deploy -v",
+    "invoke": "serverless invoke -f rc-entry",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./ --ext .ts"
   },
   "dependencies": {
+    "chrome-aws-lambda": "^5.2.1",
+    "puppeteer-core": "^5.2.1",
     "source-map-support": "^0.5.10"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.17",
     "@types/node": "^10.12.18",
+    "@types/puppeteer": "^3.0.1",
     "@types/serverless": "^1.72.5",
     "@typescript-eslint/eslint-plugin": "^3.10.1",
     "@typescript-eslint/parser": "^3.10.1",
