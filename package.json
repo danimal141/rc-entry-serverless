@@ -5,7 +5,7 @@
   "main": "handler.js",
   "scripts": {
     "deploy": "serverless deploy -v",
-    "invoke": "serverless invoke -f rc-entry",
+    "invoke": "serverless invoke -f rcEntry",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint ./ --ext .ts"
   },
