@@ -13,6 +13,4 @@ export default async function entry(browser: Browser) {
   await page.goto(ENTRY_URL, { waitUntil: 'domcontentloaded' })
   await page.click('.riCheckEntryMulti__noLoginButton')
   await page.waitForNavigation({ timeout: 30000, waitUntil: 'domcontentloaded' })
-  const title =  await page.title()
-  console.log(`After finishing entry, the page title: ${title}`)
 }

@@ -3,7 +3,7 @@ import { Browser } from 'puppeteer'
 import * as chromium from 'chrome-aws-lambda'
 import 'source-map-support/register'
 
-import entry from './rc-entry/entry'
+import entry from './rcEntry/entry'
 
 export const rcEntry: Handler = async (_event, _context) => {
   let browser: Browser = null
@@ -15,7 +15,9 @@ export const rcEntry: Handler = async (_event, _context) => {
       executablePath: await chromium.executablePath,
       headless: chromium.headless,
     })
-    entry(browser).catch(err => console.error(err))
+    await entry(browser)
+    const title =  await page.title()
+    console.log(`After finishing entry, the page title: ${title}`)
   } finally {
     if (browser !== null) {
       await browser.close()
