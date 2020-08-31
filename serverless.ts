@@ -22,6 +22,7 @@ const serverlessConfiguration: Serverless = {
     apiGateway: {
       minimumCompressionSize: 1024,
     },
+    region: 'ap-northeast-1',
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
       EMAIL: process.env.EMAIL,
