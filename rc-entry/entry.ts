@@ -11,7 +11,7 @@ export default async function entry(browser: Browser) {
   for (const cookie of cookies) { await page.setCookie(cookie) }
 
   await page.goto(ENTRY_URL, { waitUntil: 'domcontentloaded' })
-  page.click('.riCheckEntryMulti__noLoginButton')
+  await page.click('.riCheckEntryMulti__noLoginButton')
   await page.waitForNavigation({ timeout: 30000, waitUntil: 'domcontentloaded' })
   const title =  await page.title()
   console.log(`After finishing entry, the page title: ${title}`)

@@ -14,7 +14,7 @@ export default async function login(browser: Browser): Promise<Cookie[]> {
   await page.goto(LOGIN_URL, { waitUntil: 'domcontentloaded' })
   await page.type('#loginInner_u', username)
   await page.type('#loginInner_p', password)
-  page.click('.loginButton')
+  await page.click('.loginButton')
 
   await page.waitForNavigation({ timeout: 30000, waitUntil: 'domcontentloaded' })
   const title = await page.title()
