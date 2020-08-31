@@ -38,6 +38,11 @@ module.exports = {
           experimentalWatchApi: true,
         },
       },
+      {
+        test: /\.ts$/,
+        loader: 'eslint-loader',
+        options: { configFile: '.eslintrc.js' }
+      },
     ],
   },
   plugins: [
