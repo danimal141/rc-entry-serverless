@@ -19,6 +19,7 @@ const serverlessConfiguration: Serverless = {
   provider: {
     name: 'aws',
     runtime: 'nodejs12.x',
+    timeout: 60,
     apiGateway: {
       minimumCompressionSize: 1024,
     },
@@ -32,6 +33,8 @@ const serverlessConfiguration: Serverless = {
   functions: {
     rcEntry: {
       handler: 'handler.rcEntry',
+      timeout: 60,
+      memorySize: 512,
       events: [
         {
           http: {
