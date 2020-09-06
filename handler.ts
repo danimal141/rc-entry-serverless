@@ -7,6 +7,7 @@ import entry from './rcEntry/entry'
 
 export const rcEntry: Handler = async (_event, _context) => {
   let browser: Browser = null
+  console.log('----START PROCESSING----')
 
   try {
     browser = await chromium.puppeteer.launch({
