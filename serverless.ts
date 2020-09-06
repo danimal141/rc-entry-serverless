@@ -19,10 +19,7 @@ const serverlessConfiguration: Serverless = {
   provider: {
     name: 'aws',
     runtime: 'nodejs12.x',
-    timeout: 60,
-    apiGateway: {
-      minimumCompressionSize: 1024,
-    },
+    timeout: 120,
     region: 'ap-northeast-1',
     environment: {
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
@@ -33,14 +30,11 @@ const serverlessConfiguration: Serverless = {
   functions: {
     rcEntry: {
       handler: 'handler.rcEntry',
-      timeout: 60,
+      timeout: 120,
       memorySize: 512,
       events: [
         {
-          http: {
-            method: 'get',
-            path: 'rcEntry',
-          }
+          schedule: 'cron(* 3 */5 * ? *)',
         }
       ]
     }
